@@ -1,3 +1,6 @@
+/*
+This script will truncate all of the tables then take the files in the locations listed and load them into the respective tables.
+*/
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
 	BEGIN TRY
