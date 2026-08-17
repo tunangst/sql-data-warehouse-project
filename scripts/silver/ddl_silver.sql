@@ -1,5 +1,6 @@
 /*
 This script creates tables in the bronze schema.
+The Silver tables are designed to clean and enrich the data to be pushed to the Gold tables
 It will truncate all of the tables and recreate them.
 */
 
@@ -7,7 +8,7 @@ USE DataWarehouse;
 
 IF OBJECT_ID('silver.crm_cust_info','U') IS NOT NULL
 	DROP TABLE silver.crm_cust_info;
-CREATE TABLE silver.crm_cust_info(
+CREATE TABLE silver.crm_cust_info (
 	cst_id INT,
 	cst_key NVARCHAR(50),
 	cst_firstname NVARCHAR(50),
@@ -17,26 +18,26 @@ CREATE TABLE silver.crm_cust_info(
 	cst_create_date DATE,
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
+GO
 
 IF OBJECT_ID('silver.crm_prd_info','U') IS NOT NULL
 	DROP TABLE silver.crm_prd_info;
-CREATE TABLE silver.crm_prd_info(
+CREATE TABLE silver.crm_prd_info (
 	prd_id INT,
-	prd_key NVARCHAR(50),
-	cc_cat_id NVARCHAR(10),
-	cc_prd_key NVARCHAR(20),
+	cat_id NVARCHAR(20),
+	prd_key NVARCHAR(20),
 	prd_nm NVARCHAR(50),
 	prd_cost INT,
 	prd_line NVARCHAR(20),
 	prd_start_dt DATE,
 	prd_end_dt DATE,
-	cc_prd_end_dt DATE,
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
+GO
 
 IF OBJECT_ID('silver.crm_sales_details','U') IS NOT NULL
 	DROP TABLE silver.crm_sales_details;
-CREATE TABLE silver.crm_sales_details(
+CREATE TABLE silver.crm_sales_details (
 	sls_ord_num NVARCHAR(10),
 	sls_prd_key NVARCHAR(10),
 	sls_cust_id INT,
@@ -48,27 +49,30 @@ CREATE TABLE silver.crm_sales_details(
 	sls_price INT,
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
+GO
 
 IF OBJECT_ID('silver.erp_cust_az12','U') IS NOT NULL
 	DROP TABLE silver.erp_cust_az12;
-CREATE TABLE silver.erp_cust_az12(
+CREATE TABLE silver.erp_cust_az12 (
 	cid NVARCHAR(15),
 	bdate DATE,
 	gen NVARCHAR(20),
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
+GO
 
 IF OBJECT_ID('silver.erp_loc_a101','U') IS NOT NULL
 	DROP TABLE silver.erp_loc_a101;
-CREATE TABLE silver.erp_loc_a101(
+CREATE TABLE silver.erp_loc_a101 (
 	cid NVARCHAR(15),
 	cntry NVARCHAR(50),
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
+GO
 
 IF OBJECT_ID('silver.erp_px_cat_g1v2','U') IS NOT NULL
 	DROP TABLE silver.erp_px_cat_g1v2;
-CREATE TABLE silver.erp_px_cat_g1v2(
+CREATE TABLE silver.erp_px_cat_g1v2 (
 	id NVARCHAR(10),
 	cat NVARCHAR(50),
 	subcat NVARCHAR(50),
