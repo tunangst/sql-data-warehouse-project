@@ -1,6 +1,7 @@
 /*
 This script creates tables in the bronze schema.
-It will truncate all of the tables and recreate them.
+The Bronze tables are designed to be the "as is" ingestion location
+This will truncate all of the tables and recreate them.
 */
 
 USE DataWarehouse;
