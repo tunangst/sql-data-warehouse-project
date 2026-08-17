@@ -1,3 +1,8 @@
+-- ====================================================================
+-- Checking 'silver.crm_cust_info'
+-- ====================================================================
+-- Check for NULLs or Duplicates in Primary Key
+-- Expectation: No Results
 SELECT 
     cst_id,
     COUNT(*) 
