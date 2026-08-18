@@ -31,7 +31,7 @@ The Gold layer is the business level data representation. The purpose is to supp
 | product_number | NVARCHAR(20) | Alphanumeric code representing the product, used for categorization and inventory |
 | category_id | NVARCHAR(20) | The product category's unique identifier |
 | category | NVARCHAR(50) | The product's classification (ex 'Bike','Shoe') |
-| subcategory | NVARCHAR(50) | A lower level classification of the product (ex. 'Supercaliber SLR 9.9 XTR Di2 Gen2') |
+| subcategory | NVARCHAR(50) | A lower level classification of the product (ex. 'Mountain Bike','Sneaker') |
 | maintenance_required | NVARCHAR(5) | Indicator if product requires maintenance (ex. 'Yes', 'No") |
 | cost | INT | The product's base price (not in decimal) |
 | product_line | NVARCHAR(20) | The product's specific product line (ex. 'Road','Mountain') |
